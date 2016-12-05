@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios';
 // import AuthService from './utils/AuthService';
 
-class Compose extends Component {
+class Collection extends Component {
   constructor(props){
     super(props);
 
@@ -46,22 +46,16 @@ class Compose extends Component {
   render(){
     // const auth = this.props.route.auth;
     // if (auth.loggedIn() === true) {
-    //     console.log('loggedIn Compose');
+    //     console.log('loggedIn Collection');
     // }
     return(
-      <div className="Compose">
+      <div className="Collection">
         <h1>Poem</h1>
         <br />
         <br />
-        <form onSubmit={this._handleSubmit}>
-           <input type="text" ref="titleP" placeholder="title" /><br />
-           <textarea rows="30" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
-           <input type="checkbox" ref="public" />Public<br />
-           <input type="submit" />
-         </form>
       </div>
     )
   }
 }
 
-export default Compose;
+export default Collection;

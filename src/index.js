@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Home from './Home.js'
 import PoemFlow from './PoemFlow'
-import Compose from './Compose'
+import Collection from './Collection'
 import './index.css';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import AuthService from './utils/AuthService';
@@ -24,7 +24,7 @@ ReactDOM.render(
  <Router history={hashHistory}>
  <Route path='/' component={App} auth={auth}>
    <IndexRoute component={Home} />
-   <Route path='Compose' component={Compose} onEnter={requireAuth}/>
+   <Route path='Collection' component={Collection} onEnter={requireAuth}/>
    <Route path='PoemFlow' component={PoemFlow} onEnter={requireAuth}/>
    <Route path="/access_token=:token" component={Home} />
    {/* <Route path=”contact” component={Contact}/> */}

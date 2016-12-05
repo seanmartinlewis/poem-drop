@@ -22,7 +22,7 @@ constructor(props, context) {
 
   _logoutLink() {
      return (
-       <div>
+       <div className="profile">
        <a href='#' onClick={(e) => {
          e.preventDefault()
          this.props.route.auth.logout()
@@ -30,8 +30,7 @@ constructor(props, context) {
        }}>
          Logout
        </a>
-       <img src={this.state.profile.picture} alt="pic" className="profile"/>
-       <p>{this.state.profile.name}</p>
+       <img src={this.state.profile.picture} alt="pic" className="profilePic"/>
        <p>{this.state.profile.email}</p>
        <p>{this.state.profile.nickname}</p>
        </div>
@@ -69,17 +68,16 @@ constructor(props, context) {
     return (
     <div>
       <div className="header">
-        <div className='nav'>
-        <IndexLink to="/" activeClassName="active">Home</IndexLink>
-        {' '}
-        <Link to="/PoemFlow" activeClassName="active">Poem Flow</Link>
-        {' '}
-        <Link to="/Compose" activeClassName="active">Compose</Link>
-        {' '}
-        </div>
-
         <h2 className='title'>Poem Drop</h2>
-        {sessionLink}
+          <div className='nav'>
+            <IndexLink className="navLink" to="/" activeClassName="active">Home</IndexLink>
+            {' '}
+            <Link className="navLink" to="/Collection" activeClassName="active">Collection</Link>
+            {' '}
+            <Link className="navLink" to="/PoemFlow" activeClassName="active">Poem Flow</Link>
+            {' '}
+          </div>
+          {sessionLink}
       </div>
       <div className='content'>
         {children}

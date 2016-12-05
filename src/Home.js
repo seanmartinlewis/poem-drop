@@ -64,12 +64,9 @@ static propTypes = {
     } else {
       return(
         <div className="home">
-          <h1>Poem</h1>
-          <br />
-          <br />
           <form onSubmit={this._handleSubmit}>
              <input type="text" ref="titleP" placeholder="title" /><br />
-             <textarea rows="30" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
+             <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
              <input type="checkbox" ref="public" />Public<br />
              <input type="submit" />
            </form>

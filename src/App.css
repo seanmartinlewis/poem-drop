@@ -12,6 +12,7 @@ h2.title{
   color: black;
   font-size: 30px;
   text-align: center;
+  margin: 20px;
 }
 
 button{
@@ -25,14 +26,24 @@ button{
   justify-content: center;
 }
 
-img.profile{
-  height: 100px;
-  width: auto;
+.profile{
+  display: flex;
+  flex-direction: column;
+}
+
+img.profilePic{
+  height: 70px;
+  width: 100%;
+  max-width: 70px;
+
 }
 
 .nav{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+}
+
+.navLink{
   margin: 0 20px;
 }
 
