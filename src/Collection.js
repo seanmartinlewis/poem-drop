@@ -3,6 +3,7 @@ import './App.css';
 // import {Link, IndexLink, hashHistory} from 'react-router';
 import axios from 'axios';
 // import AuthService from './utils/AuthService';
+import Poem from './Poem'
 
 class Collection extends Component {
   constructor(props){
@@ -11,48 +12,37 @@ class Collection extends Component {
     this.state = {
       poems: []
     }
-
-    this._handleSubmit = this._handleSubmit.bind(this)
   }
 
-  _handleSubmit(e) {
-    e.preventDefault()
-    console.log('hello');
-    let poemTitle = this.refs.titleP.value;
-    let poemBody = this.refs.poemBody.value;
-    console.log(poemTitle);
-    console.log(poemBody);
-    axios.post('http://localhost:3000/poems', {
-      title: poemTitle,
-      poem: poemBody,
-      public: false
-    }, {
+  componentDidMount(){
+  this._loadPoems()
+  }
+
+  _loadPoems() {
+    console.log('loading poems');
+    axios.get('http://localhost:3000/poems', {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Bearer ${this.props.auth.getToken()}`
       }
-    }).then(response => {
-      let poem = response.data;
-      let poems = this.state.poems
-      poems.push(poem)
+    }).then(data => {
+      let newPoems = data.data;
+      console.log(newPoems);
+      // let poems = this.state.poems
+      // poems.push(poem)
       this.setState({
-        poems: poems
+        poems: newPoems
       })
-      this.refs.titleP.value = '';
-      this.refs.poemBody.value = '';
     })
   }
 
   render(){
-    // const auth = this.props.route.auth;
-    // if (auth.loggedIn() === true) {
-    //     console.log('loggedIn Collection');
-    // }
+
     return(
       <div className="Collection">
-        <h1>Poem</h1>
-        <br />
-        <br />
+       {this.state.poems.map((poem, i) => {
+         return <Poem key={i} title={poem.title} poem={poem.poem} />
+       })}
       </div>
     )
   }
