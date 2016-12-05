@@ -1,16 +1,17 @@
+.home{
+  max-width: 700px;
+}
 
-.center{
-  background-color: black;
-  font-size: 18px;
-  padding: 13px;
-  display: block;
+h1.welcome{
+  color: black;
+  font-size: 20px;
+  text-align: center;
 }
 
 h2.title{
-  display: inline-block;
-  color: white;
-  margin: 20px;
-  text-align: left;
+  color: black;
+  font-size: 30px;
+  text-align: center;
 }
 
 button{
@@ -19,8 +20,20 @@ button{
 }
 
 .content{
+  margin-top: 30px;
   display: flex;
   justify-content: center;
+}
+
+img.profile{
+  height: 100px;
+  width: auto;
+}
+
+.nav{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20px;
 }
 
 /*@keyframes App-logo-spin {

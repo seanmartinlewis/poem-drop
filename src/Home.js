@@ -1,9 +1,17 @@
-import React, {Component} from 'react';
+import React, { PropTypes as T } from 'react';
 import './App.css';
-// import {Link} from 'react-router';
+// import {Link, IndexLink, hashHistory} from 'react-router';
 import axios from 'axios';
+import AuthService from './utils/AuthService';
 
-class Home extends Component {
+class Home extends React.Component {
+  static contextTypes = {
+  router: T.object
+}
+
+static propTypes = {
+  auth: T.instanceOf(AuthService)
+}
   constructor(props){
     super(props);
 
@@ -22,12 +30,14 @@ class Home extends Component {
     console.log(poemTitle);
     console.log(poemBody);
     axios.post('http://localhost:3000/poems', {
-      title: poemTitle,
-      poem: poemBody,
-      public: false
+      poem: {
+        title: poemTitle,
+        poem: poemBody,
+        public: false
+      }
     }, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Bearer ${this.props.auth.getToken()}`
       }
     }).then(response => {
@@ -43,19 +53,30 @@ class Home extends Component {
   }
 
   render(){
-    return(
-      <div className="home">
-        <h1>Poem</h1>
-        <br />
-        <br />
-        <form onSubmit={this._handleSubmit}>
-           <input type="text" ref="titleP" placeholder="title" /><br />
-           <textarea rows="30" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
-           <input type="checkbox" ref="public" />Public<br />
-           <input type="submit" />
-         </form>
-      </div>
-    )
+    const auth = this.props.auth;
+    if (auth.loggedIn() === false) {
+        console.log('loggedIn H');
+        return(
+          <div className="home">
+            <h1>Poem</h1>
+          </div>
+        )
+    } else {
+      return(
+        <div className="home">
+          <h1>Poem</h1>
+          <br />
+          <br />
+          <form onSubmit={this._handleSubmit}>
+             <input type="text" ref="titleP" placeholder="title" /><br />
+             <textarea rows="30" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
+             <input type="checkbox" ref="public" />Public<br />
+             <input type="submit" />
+           </form>
+        </div>
+      )
+    }
+
   }
 }
 
