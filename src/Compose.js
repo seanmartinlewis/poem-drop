@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios';
 import AuthService from './utils/AuthService';
 
-class Home extends React.Component {
+class Compose extends React.Component {
   static contextTypes = {
   router: T.object
 }
@@ -58,13 +58,18 @@ static propTypes = {
         console.log('loggedIn H');
         return(
           <div className="home">
-            <h1>Poem Drop</h1>
+            <h1>Poem</h1>
           </div>
         )
     } else {
       return(
         <div className="home">
-          <h3>POEM DROP</h3>
+          <form onSubmit={this._handleSubmit}>
+             <input type="text" ref="titleP" placeholder="title" /><br />
+             <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
+             <input type="checkbox" ref="public" />Public<br />
+             <input type="submit" />
+           </form>
         </div>
       )
     }
@@ -72,4 +77,4 @@ static propTypes = {
   }
 }
 
-export default Home;
+export default Compose;

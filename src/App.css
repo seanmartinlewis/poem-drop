@@ -1,5 +1,14 @@
 .home{
   max-width: 700px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.Collection{
+  max-width: 140px;
+  display: flex;
+  flex-direction: row;
 }
 
 .poem{
@@ -29,8 +38,6 @@ button{
 
 .content{
   margin-top: 30px;
-  display: flex;
-  justify-content: center;
 }
 
 .profile{
@@ -64,6 +71,13 @@ img.profilePic{
   white-space: pre-wrap;
   font-size: 12px;
 }
+
+.activePoem{
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 
 
 /*@keyframes App-logo-spin {

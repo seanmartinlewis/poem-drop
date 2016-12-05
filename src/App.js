@@ -16,7 +16,8 @@ static propTypes = {
 constructor(props, context) {
   super(props, context)
   this.state = {
-    profile: this.props.route.auth.getProfile()
+    profile: this.props.route.auth.getProfile(),
+    poem: 'Click on Poem To load'
   }
 }
 
@@ -71,6 +72,8 @@ constructor(props, context) {
         <h2 className='title'>Poem Drop</h2>
           <div className='nav'>
             <IndexLink className="navLink" to="/" activeClassName="active">Home</IndexLink>
+            {' '}
+            <Link className="navLink" to="/Compose" activeClassName="active">Compose</Link>
             {' '}
             <Link className="navLink" to="/Collection" activeClassName="active">Collection</Link>
             {' '}
