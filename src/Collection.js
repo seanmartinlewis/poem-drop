@@ -16,7 +16,9 @@ class Collection extends Component {
         id: 0,
         title: 'Click',
         poem: 'On poem to view and edit',
-        public: false
+        public: false,
+        profile_picture: '',
+        email: '',
       }
     }
     this.handleChangeTitle = this.handleChangeTitle.bind(this);

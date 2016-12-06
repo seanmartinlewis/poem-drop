@@ -40,6 +40,8 @@ class PoemFlow extends Component {
             <h3>{poem.title}</h3>
             <p>{poem.poem}</p>
             <p>{poem.user_id}</p>
+            <img src={poem.profile_picture} alt="pic" className="profilePic"/>
+            <p>{poem.email}</p>
           </div>
           )
         })}
