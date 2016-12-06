@@ -70,6 +70,7 @@ img.profilePic{
 .poemBody{
   white-space: pre-wrap;
   font-size: 12px;
+  justify-content: center;
 }
 
 .activePoem{
@@ -78,6 +79,10 @@ img.profilePic{
   margin: 0 auto;
 }
 
+form{
+  justify-content: center;
+  margin: 0 auto;
+}
 
 
 /*@keyframes App-logo-spin {

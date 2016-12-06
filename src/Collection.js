@@ -13,22 +13,55 @@ class Collection extends Component {
     this.state = {
       poems: [],
       mainPoem: {
+        id: 0,
         title: 'Click',
         poem: 'On poem to view and edit'
       }
     }
-
-    this._loadThisPoem = this._loadThisPoem.bind(this)
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this._loadThisPoem = this._loadThisPoem.bind(this);
+    this._handleSubmitPut = this._handleSubmitPut.bind(this);
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.poems === this.state.poems) {
+  //     return false
+  //   } else {
+  //     console.log('shouldComponentUpdate');
+  //     return true;
+  //   }
+  // }
 
   componentDidMount(){
   this._loadPoems()
   }
 
+
+  handleChangeTitle(event) {
+    let newPoem = Object.assign(
+      {},
+      this.state.mainPoem,
+      { title:event.target.value }
+    )
+    this.setState({mainPoem: newPoem});
+  }
+
+  handleChangeText(event) {
+    let newPoem = Object.assign(
+      {},
+      this.state.mainPoem,
+      { poem: event.target.value }
+    )
+    this.setState({mainPoem: newPoem});
+  }
+
+
   _loadThisPoem(thisPoem){
-    console.log('hello', thisPoem);
+    console.log('poem id', thisPoem.id);
     this.setState({
       mainPoem: {
+        id: thisPoem.id,
         title: thisPoem.title,
         poem: thisPoem.poem
       }
@@ -45,11 +78,32 @@ class Collection extends Component {
     }).then(data => {
       let newPoems = data.data;
       console.log(newPoems);
-      // let poems = this.state.poems
-      // poems.push(poem)
       this.setState({
         poems: newPoems
       })
+    })
+  }
+
+  _handleSubmitPut(e) {
+    e.preventDefault()
+    console.log('update');
+    let poemTitle = this.refs.titleP.value;
+    let poemBody = this.refs.poemBody.value;
+    console.log(poemTitle);
+    console.log(poemBody);
+    console.log('id', this.state.mainPoem.id);
+    axios.put('http://localhost:3000/poems/' + this.state.mainPoem.id, {
+      poem: {
+        title: poemTitle,
+        poem: poemBody,
+        public: false
+      }
+    }, {
+      headers: {
+        'Authorization': `Bearer ${this.props.auth.getToken()}`
+      }
+    }).then(response => {
+      this._loadPoems()
     })
   }
 
@@ -64,9 +118,9 @@ class Collection extends Component {
       </div>
        <div className="activePoem">
        <div className="home">
-         <form onSubmit={this._handleSubmit}>
-            <input type="text" ref="titleP" placeholder="title" value={this.state.mainPoem.title} /><br />
-            <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here" value={this.state.mainPoem.poem}/><br />
+         <form onSubmit={this._handleSubmitPut}>
+            <input type="text" ref="titleP" placeholder="title" value={this.state.mainPoem.title} onChange={this.handleChangeTitle} /><br />
+            <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here" value={this.state.mainPoem.poem} onChange={this.handleChangeText}/><br />
             <input type="checkbox" ref="public" />Public<br />
             <input type="submit" value="Save Changes" />
           </form>

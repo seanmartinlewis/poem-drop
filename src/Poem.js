@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 // import ActivePoem from './ActivePoem'
  class Poem extends Component {
-   constructor(props){
-     super(props)
-
-    //  this._loadThisPoem = this._loadThisPoem.bind(this)
-   }
-
 
    render() {
 
