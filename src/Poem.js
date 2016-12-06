@@ -7,7 +7,7 @@ import React, { Component } from 'react';
      return (
        <div className="poem" onClick={(e) => this.props.loadPoem(this.props.poem)}>
          <h3 className="poemTitle">{this.props.poem.title}</h3>
-         {/* <p className="poemBody">{this.props.poem}</p> */}
+         <p className="poemBody">{this.props.poem}</p>
        </div>
      );
    }
