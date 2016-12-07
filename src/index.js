@@ -4,7 +4,7 @@ import App from './App';
 import Home from './Home.js'
 import PoemFlow from './PoemFlow'
 import Collection from './Collection'
-import Compose from './Compose'
+// import Compose from './Compose'
 import './index.css';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import AuthService from './utils/AuthService';
@@ -27,7 +27,7 @@ ReactDOM.render(
    <IndexRoute component={Home} />
    <Route path='Collection' component={Collection} onEnter={requireAuth}/>
    <Route path='PoemFlow' component={PoemFlow} onEnter={requireAuth}/>
-   <Route path='Compose' component={Compose} onEnter={requireAuth}/>
+   {/* <Route path='Compose' component={Compose} onEnter={requireAuth}/> */}
    <Route path="/access_token=:token" component={Home} />
    {/* <Route path=”contact” component={Contact}/> */}
  </Route>

@@ -6,7 +6,6 @@
 }
 
 .Collection{
-  max-width: 140px;
   display: flex;
   flex-direction: row;
 }

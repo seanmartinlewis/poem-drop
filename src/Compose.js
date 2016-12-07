@@ -1,7 +1,7 @@
 import React, { PropTypes as T } from 'react';
 import './App.css';
 import Thesaurus from "./Thesaurus";
-import {Link, IndexLink, hashHistory} from 'react-router';
+import Dictionary from "./Dictionary";
 import axios from 'axios';
 import AuthService from './utils/AuthService';
 
@@ -72,14 +72,19 @@ static propTypes = {
         )
     } else {
       return(
-        <div className="home">
-          <form onSubmit={this._handleSubmit}>
-             <input type="text" ref="titleP" placeholder="title" /><br />
-             <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
-             {/* <input type="checkbox" ref="public" onCheck={this._makePublic} />Public<br /> */}
-             <input type="submit" />
-           </form>
-           <Thesaurus />
+        <div className="Collection">
+          <div className="poemList">
+            <Thesaurus />
+            <Dictionary />
+          </div>
+          <div className="activePoem">
+            <form onSubmit={this._handleSubmit}>
+               <input type="text" ref="titleP" placeholder="title" /><br />
+               <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
+               {/* <input type="checkbox" ref="public" onCheck={this._makePublic} />Public<br /> */}
+               <input type="submit" />
+            </form>
+           </div>
         </div>
       )
     }

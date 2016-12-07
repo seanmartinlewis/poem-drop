@@ -146,13 +146,13 @@ class Collection extends Component {
         })}
       </div>
        <div className="activePoem">
-       <div className="home">
+       <div >
          <form onSubmit={this._handleSubmitPut}>
             <input type="text" ref="titleP" placeholder="title" value={this.state.mainPoem.title} onChange={this.handleChangeTitle} /><br />
             <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here" value={this.state.mainPoem.poem} onChange={this.handleChangeText}/><br />
-            <input type="checkbox" ref="public" checked={this.state.mainPoem.public} onChange={this._toggleCheckbox}/>Public<br />
-            <input type="submit" value="Save Changes" />
+            <input type="submit" value="Update" />
             <button onClick={this._deleteThisPoem}>Delete Poem</button>
+            <input type="checkbox" ref="public" checked={this.state.mainPoem.public} onChange={this._toggleCheckbox}/>Public<br />
           </form>
        </div>
        </div>
