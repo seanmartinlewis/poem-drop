@@ -3,6 +3,7 @@ import './App.css';
 // import {Link, IndexLink, hashHistory} from 'react-router';
 import Thesaurus from "./Thesaurus";
 import Dictionary from "./Dictionary";
+import Rhyme from "./Rhyme";
 import axios from 'axios';
 import AuthService from './utils/AuthService';
 
@@ -77,6 +78,7 @@ static propTypes = {
         <div className="poemList">
           <Thesaurus />
           <Dictionary />
+          <Rhyme />
         </div>
           <div className="activePoem">
             <form onSubmit={this._handleSubmit}>
