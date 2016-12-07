@@ -71,9 +71,7 @@ constructor(props, context) {
       <div className="header">
         <h2 className='title'>Poem Drop</h2>
           <div className='nav'>
-            <IndexLink className="navLink" to="/" activeClassName="active">Home</IndexLink>
-            {' '}
-            <Link className="navLink" to="/Compose" activeClassName="active">Compose</Link>
+            <IndexLink className="navLink" to="/" activeClassName="active">Compose</IndexLink>
             {' '}
             <Link className="navLink" to="/Collection" activeClassName="active">Collection</Link>
             {' '}
