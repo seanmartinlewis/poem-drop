@@ -2,6 +2,7 @@ import React, { PropTypes as T } from 'react';
 import './App.css';
 // import {Link, IndexLink, hashHistory} from 'react-router';
 import Thesaurus from "./Thesaurus";
+import Dictionary from "./Dictionary";
 import axios from 'axios';
 import AuthService from './utils/AuthService';
 
@@ -75,6 +76,7 @@ static propTypes = {
         <div className="Collection">
         <div className="poemList">
           <Thesaurus />
+          <Dictionary />
         </div>
           <div className="activePoem">
             <form onSubmit={this._handleSubmit}>

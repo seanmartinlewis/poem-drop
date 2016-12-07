@@ -14,8 +14,8 @@ class Collection extends Component {
       poems: [],
       mainPoem: {
         id: 0,
-        title: 'Click',
-        poem: 'On poem to view and edit',
+        title: 'Poem Collection',
+        poem: 'Click on poem to view and edit',
         public: false,
         profile_picture: '',
         email: '',
@@ -56,8 +56,8 @@ class Collection extends Component {
       this.setState({
         mainPoem: {
           id: 0,
-          title: 'Click',
-          poem: 'On poem to view and edit'
+          title: 'Poem Collection',
+          poem: 'Click on poem to view and edit'
         }
       })
     })
