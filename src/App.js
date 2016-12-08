@@ -77,6 +77,8 @@ constructor(props, context) {
             {' '}
             <Link className="navLink" to="/PoemFlow" activeClassName="active">Poem Flow</Link>
             {' '}
+            <Link className="navLink" to="/Profile" activeClassName="active">Profile</Link>
+            {' '}
           </div>
           {sessionLink}
       </div>
