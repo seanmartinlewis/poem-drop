@@ -11,8 +11,15 @@ import axios from 'axios';
        verbs: []
      }
 
-
+     this._clearField = this._clearField.bind(this)
      this._findSynonyms = this._findSynonyms.bind(this)
+   }
+
+   _clearField(){
+     this.setState({
+       nouns: [],
+       verbs: []
+     })
    }
 
    _findSynonyms(){
@@ -39,18 +46,19 @@ import axios from 'axios';
            <input type="text" ref="wordToFind" placeholder="enter word" />
            <input type="submit" value="SEARCH"/>
          </form>
-          <div>
-            <h3>Nouns:</h3>
-            {this.state.nouns.map((noun, i) => {
-              return <p key={i}>{noun}</p>
-            })}
-          </div>
-          <div>
-            <h3>Verbs:</h3>
-            {this.state.verbs.map((verb, i) => {
-              return <p key={i}>{verb}</p>
-            })}
-          </div>
+         <button onClick={this._clearField}>CLEAR</button>
+         <div>
+           <div className="results">
+             {this.state.nouns.map((noun, i) => {
+               return <p className="words" key={i}>n:  {noun}</p>
+             })}
+           </div>
+           <div className="results">
+             {this.state.verbs.map((verb, i) => {
+               return <p className="words" key={i}>v:  {verb}</p>
+             })}
+           </div>
+         </div>
        </div>
      );
    }

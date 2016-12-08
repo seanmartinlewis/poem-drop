@@ -11,8 +11,14 @@ import axios from 'axios';
 
      }
 
-
+    this._clearField = this._clearField.bind(this)
      this._findDefinition = this._findDefinition.bind(this)
+   }
+
+   _clearField(){
+     this.setState({
+       definitions: [],
+     })
    }
 
    _findDefinition(){
@@ -40,12 +46,13 @@ import axios from 'axios';
            <input type="text" ref="wordToSearch" placeholder="enter word" />
            <input type="submit" value="SEARCH"/>
          </form>
+          <button onClick={this._clearField}>CLEAR</button>
           <div>
           {this.state.definitions.map((definition, i) => {
             return(
-            <div key={i}>
-              <p>{definition.partOfSpeech}:</p>
-              <h3>{definition.definition}</h3>
+            <div className="results" key={i}>
+              <p className="results">{definition.partOfSpeech}</p>
+              <h3 className="results">{definition.definition}</h3>
             </div>
             )
           })}

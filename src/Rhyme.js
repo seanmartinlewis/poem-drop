@@ -11,8 +11,14 @@ import axios from 'axios';
 
      }
 
-
+     this._clearField = this._clearField.bind(this)
      this._findRhyme = this._findRhyme.bind(this)
+   }
+
+   _clearField(){
+     this.setState({
+       rhymes: [],
+     })
    }
 
    _findRhyme(){
@@ -34,15 +40,16 @@ import axios from 'axios';
    render() {
 
      return (
-       <div className="dictionary">
+       <div className="rhyme">
         <h4>Rhyme</h4>
          <form onSubmit={this._findRhyme}>
            <input type="text" ref="wordToSearch" placeholder="enter word" />
            <input type="submit" value="SEARCH"/>
          </form>
-          <div>
+         <button onClick={this._clearField}>CLEAR</button>
+          <div className="results">
           {this.state.rhymes.map((rhyme, i) => {
-            return <p key={i}>{rhyme}</p>
+            return <p className="words" key={i}>{rhyme}</p>
           })}
           </div>
        </div>

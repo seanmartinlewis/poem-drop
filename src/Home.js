@@ -38,7 +38,7 @@ static propTypes = {
     console.log(poemTitle);
     console.log(poemBody);
     console.log(userEmail);
-    axios.post('http://localhost:3000/poems', {
+    axios.post('https://guarded-lowlands-63333.herokuapp.com/poems', {
       poem: {
         title: poemTitle,
         poem: poemBody,
@@ -74,20 +74,20 @@ static propTypes = {
         )
     } else {
       return(
-        <div className="Collection">
-        <div className="poemList">
-          <Thesaurus />
-          <Dictionary />
-          <Rhyme />
-        </div>
-          <div className="activePoem">
+        <div className="Compose">
+          <div className="activePoemCompose">
             <form onSubmit={this._handleSubmit}>
-               <input type="text" ref="titleP" placeholder="title" /><br />
+               <input className="titleArea" type="text" ref="titleP" placeholder="title" /><br />
                <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
                {/* <input type="checkbox" ref="public" onCheck={this._makePublic} />Public<br /> */}
-               <input type="submit" />
+               <input type="submit" className="buttonForm" />
             </form>
            </div>
+          <div className="wordReferenceList">
+            <Thesaurus />
+            <Dictionary />
+            <Rhyme />
+          </div>
         </div>
       )
     }

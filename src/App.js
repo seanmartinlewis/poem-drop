@@ -1,5 +1,6 @@
 import React, { PropTypes as T } from 'react';
 import './App.css';
+import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 import {Link, IndexLink, hashHistory} from 'react-router';
 import AuthService from './utils/AuthService';
 
@@ -24,15 +25,28 @@ constructor(props, context) {
   _logoutLink() {
      return (
        <div className="profile">
-       <a href='#' onClick={(e) => {
-         e.preventDefault()
-         this.props.route.auth.logout()
-         hashHistory.push('/')
-       }}>
-         Logout
-       </a>
-       <img src={this.state.profile.picture} alt="pic" className="profilePic"/>
-       <p>{this.state.profile.email}</p>
+         <Dropdown>
+           <DropdownTrigger><img src={this.state.profile.picture} alt="pic" className="profilePic"/></DropdownTrigger>
+           <DropdownContent>
+               <ul className=".dropdownCon">
+                   <li>
+                       <p className=".dropdownCon">{this.state.profile.email}</p>
+                   </li>
+                   <li>
+                       <p >{this.state.profile.nickname}</p>
+                   </li>
+                   <li>
+                   <a className="logoutButton dropdownCon" href='#' onClick={(e) => {
+                     e.preventDefault()
+                     this.props.route.auth.logout()
+                     hashHistory.push('/')
+                   }}>
+                     Logout
+                   </a>
+                   </li>
+               </ul>
+           </DropdownContent>
+       </Dropdown>
        <p>{this.state.profile.nickname}</p>
        </div>
      )
@@ -40,8 +54,8 @@ constructor(props, context) {
 
   _loginLink() {
     return (
-      <div>
-      <a href='#' onClick={(e) => {
+      <div className="profile">
+      <a className="loginButton" href='#' onClick={(e) => {
         e.preventDefault();
         this.props.route.auth.login()
       }}>
@@ -68,8 +82,11 @@ constructor(props, context) {
 
     return (
     <div>
-      <div className="header">
-        <h2 className='title'>Poem Drop</h2>
+      <div>
+        <div className="header">
+          <h2 className='titleOfApp'>Poem Drop</h2>
+          {sessionLink}
+        </div>
           <div className='nav'>
             <IndexLink className="navLink" to="/" activeClassName="active">Compose</IndexLink>
             {' '}
@@ -78,7 +95,6 @@ constructor(props, context) {
             <Link className="navLink" to="/PoemFlow" activeClassName="active">Poem Flow</Link>
             {' '}
           </div>
-          {sessionLink}
       </div>
       <div className='content'>
         {children}

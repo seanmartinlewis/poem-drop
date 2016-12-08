@@ -15,12 +15,13 @@ class Collection extends Component {
       mainPoem: {
         id: 0,
         title: 'Poem Collection',
-        poem: 'Click on poem to view and edit',
+        poem: 'Click on poem a poem Title to view and edit',
         public: false,
         profile_picture: '',
         email: '',
-      }
+      },
     }
+
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
     this._loadThisPoem = this._loadThisPoem.bind(this);
@@ -28,6 +29,7 @@ class Collection extends Component {
     this._deleteThisPoem = this._deleteThisPoem.bind(this);
     this._toggleCheckbox = this._toggleCheckbox.bind(this);
   }
+
 
   componentDidMount(){
   this._loadPoems()
@@ -47,7 +49,7 @@ class Collection extends Component {
     e.preventDefault()
     console.log('delete');
     console.log('id', this.state.mainPoem.id);
-    axios.delete('http://localhost:3000/poems/' + this.state.mainPoem.id, {
+    axios.delete('https://guarded-lowlands-63333.herokuapp.com/poems/' + this.state.mainPoem.id, {
       headers: {
         'Authorization': `Bearer ${this.props.auth.getToken()}`
       }
@@ -97,7 +99,7 @@ class Collection extends Component {
 
   _loadPoems() {
     console.log('loading poems');
-    axios.get('http://localhost:3000/poems', {
+    axios.get('https://guarded-lowlands-63333.herokuapp.com/poems', {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Bearer ${this.props.auth.getToken()}`
@@ -121,7 +123,7 @@ class Collection extends Component {
     console.log(poemBody);
     console.log('poem is public', poemPublic);
     console.log('id', this.state.mainPoem.id);
-    axios.put('http://localhost:3000/poems/' + this.state.mainPoem.id, {
+    axios.put('https://guarded-lowlands-63333.herokuapp.com/poems/' + this.state.mainPoem.id, {
       poem: {
         title: poemTitle,
         poem: poemBody,
@@ -140,22 +142,20 @@ class Collection extends Component {
 
     return(
       <div className="Collection">
-      <div className="poemList">
-        {this.state.poems.map((poem, i) => {
-          return <Poem loadPoem={this._loadThisPoem} key={i} poem={poem} />
-        })}
-      </div>
-       <div className="activePoem">
-       <div className="home">
-         <form onSubmit={this._handleSubmitPut}>
-            <input type="text" ref="titleP" placeholder="title" value={this.state.mainPoem.title} onChange={this.handleChangeTitle} /><br />
-            <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here" value={this.state.mainPoem.poem} onChange={this.handleChangeText}/><br />
-            <input type="checkbox" ref="public" checked={this.state.mainPoem.public} onChange={this._toggleCheckbox}/>Public<br />
-            <input type="submit" value="Save Changes" />
-            <button onClick={this._deleteThisPoem}>Delete Poem</button>
-          </form>
-       </div>
-       </div>
+          <div className="activePoem">
+            <form onSubmit={this._handleSubmitPut}>
+               <input className="titleArea" type="text" ref="titleP" placeholder="title" value={this.state.mainPoem.title} onChange={this.handleChangeTitle} /><br />
+               <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here" value={this.state.mainPoem.poem} onChange={this.handleChangeText}/><br />
+               <input type="checkbox" ref="public" checked={this.state.mainPoem.public} onChange={this._toggleCheckbox}/>Public<br />
+               <input type="submit" value="Save Changes" className="buttonForm" />
+               <button className="buttonForm" onClick={this._deleteThisPoem}>Delete Poem</button>
+             </form>
+          </div>
+          <div className="poemList">
+          {this.state.poems.map((poem, i) => {
+            return <Poem loadPoem={this._loadThisPoem} key={i} poem={poem} />
+          })}
+        </div>
       </div>
     )
   }
