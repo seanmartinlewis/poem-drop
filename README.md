@@ -16,6 +16,8 @@ Poem drop is a true single page application that allows users to login and creat
 <li>JAVASCRIPT</li>
 <li>REACT</li>
 <li>RAILS</li>
+<li>AXIOS</li>
+<li>CORS</li>
 </ul>
 
 
