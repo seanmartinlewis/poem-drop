@@ -28,12 +28,9 @@ constructor(props, context) {
          <Dropdown>
            <DropdownTrigger><img src={this.state.profile.picture} alt="pic" className="profilePic"/></DropdownTrigger>
            <DropdownContent>
-               <ul className=".dropdownCon">
+               <ul className="dropdownCon">
                    <li>
-                       <p className=".dropdownCon">{this.state.profile.email}</p>
-                   </li>
-                   <li>
-                       <p >{this.state.profile.nickname}</p>
+                       <p className="dropdownCon">{this.state.profile.email}</p>
                    </li>
                    <li>
                    <a className="logoutButton dropdownCon" href='#' onClick={(e) => {
@@ -47,19 +44,19 @@ constructor(props, context) {
                </ul>
            </DropdownContent>
        </Dropdown>
-       <p>{this.state.profile.nickname}</p>
+       <p className="username">{this.state.profile.nickname}</p>
        </div>
      )
    }
 
   _loginLink() {
     return (
-      <div className="profile">
-      <a className="loginButton" href='#' onClick={(e) => {
+      <div className="profileWelcome">
+      <a className="loginButton buttonForm" href='#' onClick={(e) => {
         e.preventDefault();
         this.props.route.auth.login()
       }}>
-        Login
+        log in :: sign up
       </a>
       </div>
     )
@@ -84,15 +81,15 @@ constructor(props, context) {
     <div>
       <div>
         <div className="header">
-          <h2 className='titleOfApp'>Poem Drop</h2>
+          <h2 className='titleOfApp'>POEM DROP</h2>
           {sessionLink}
         </div>
           <div className='nav'>
-            <IndexLink className="navLink" to="/" activeClassName="active">Compose</IndexLink>
+            <IndexLink className="navLink" to="/" activeClassName="active">compose</IndexLink>
             {' '}
-            <Link className="navLink" to="/Collection" activeClassName="active">Collection</Link>
+            <Link className="navLink" to="/Collection" activeClassName="active">collection</Link>
             {' '}
-            <Link className="navLink" to="/PoemFlow" activeClassName="active">Poem Flow</Link>
+            <Link className="navLink" to="/PoemFlow" activeClassName="active">published</Link>
             {' '}
           </div>
       </div>

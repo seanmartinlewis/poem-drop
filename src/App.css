@@ -2,6 +2,41 @@
 
 .content{
   margin-top: 30px;
+  margin-bottom: 200px;
+}
+
+/*LOGGED OUT WELCOM STYLE*/
+
+.welcome{
+  display: flex;
+  flex-direction: column;
+  padding-top: 10%;
+}
+
+.wel1{
+  justify-content: center;
+  margin: 0 auto;
+  font-family: 'Codystar', cursive;
+  font-size: 50px;
+}
+.wel2{
+  justify-content: center;
+  margin: 0 auto;
+  font-family: 'Monoton', cursive;
+  font-size: 80px;
+}
+.wel3{
+  justify-content: center;
+  margin: 0 auto;
+  font-family: 'Rubik', sans-serif;
+}
+
+
+
+.home{
+  display: flex;
+  width: 400px;
+  height: 100%;
 }
 
 /*Navigation Styles*/
@@ -9,13 +44,19 @@
 .nav{
   display: flex;
   justify-content: center;
-  background-color: rgb(250, 250, 250);
-  font-size: 18px;
+  background-color: rgb(240, 240, 240);
+  font-size: 20px;
   padding: 10px;
+  font-family: 'Poiret One', cursive;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  border-top: 1px solid rgb(220, 220, 220)
 }
 
 .navLink{
-  margin: 0 20px;
+  margin: 0 40px;
+  text-decoration: none;
+  color: #222;
 }
 
 /*Header style area*/
@@ -25,7 +66,7 @@
   flex-direction: row;
   justify-content: space-around;
   min-height: 90px;
-  /*background-color: rgb(250, 250, 250);*/
+  background-color: rgb(250, 250, 250);
 }
 
 .titleOfApp{
@@ -33,6 +74,9 @@
   color: black;
   font-size: 30px;
   align-items: center;
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: 5px;
+  font-weight: 300;
 }
 
 .profile{
@@ -41,6 +85,13 @@
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 400;
+}
+
+.profileWelcome{
+  margin-top: 2.5%;
+  align-items: center;
 }
 
 .profilePic{
@@ -48,23 +99,37 @@
   width: 100%;
   max-width: 70px;
   border-radius: 40px;
+  border: solid rgb(220, 220, 220);
+  animation: App-logo-spin infinite 30s linear;
+}
+
+.username{
+  font-size: 16px;
+  letter-spacing: 2px;
 }
 
 .logoutButton{
-  display: flex;
   align-items: center;
   background-color: #222;
   text-decoration: none;
   color: white;
   margin-right: 3%;
   margin-bottom: 5px;
+  padding-top: 10px;
   padding: 4px;
+  padding-left: 80px;
+  padding-right: 80px;
   max-height: 30px;
+  border-radius: 3px;
 }
+
 
 .loginButton{
   display: flex;
   align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Rubik', sans-serif;
 }
 
 /*Drop Down Menu Style*/
@@ -76,56 +141,26 @@
 .dropdown__content {
     display: none;
     position: absolute;
+    padding-top: 10px;
 }
 
 
 .dropdown--active .dropdown__content {
     display: block;
     position: absolute;
-    background-color: tan;
-    color: white;
+    background-color: rgba(210, 210, 210, .7);
+    border: 1px solid rgb(220, 220, 220);
+    color: #222;
     font-family: helvetica;
-    padding: 10px;
+    padding: 20px;
 }
 
-
-/*Styles for Collection*/
-.Collection{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 300px;
-}
-
-.poemList{
-  justify-content: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 150px;
-}
-
-.activePoem{
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-}
-
-input{
-  border-style: solid;
-  border: 1px;
-  margin: 3px;
-}
-
-.poem{
-  background-color: #222;
-  color: white;
-  font-family: helvetica;
+.dropdownCon{
+  margin: 10px 7px;
   text-align: center;
+  font-family: 'Rubik', sans-serif;
 }
 
-.poemTitle{
-  padding-top: 2px;
-  margin: 4px;
-}
 
 /*Styles for Compose/HOME*/
 
@@ -137,12 +172,13 @@ input{
 
 .wordReferenceList{
   justify-content: center;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
   width: 300px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
+  font-family: 'Sanchez', serif;
+  font-size: 14px;
 }
 
 .activePoemCompose{
@@ -152,17 +188,21 @@ input{
 }
 
 .thesaurus{
-  background-color: #222;
-  color:white;
+  background-color: rgb(230, 230, 230);
+  border: 1px solid rgb(200, 200, 200);
+  color:#222;
   margin:20px;
   padding: 20px;
   flex-direction: row;
   max-height: 300px;
+  border-radius: 2px;
 }
 
 .dictionary{
-  background-color: #222;
-  color:white;
+  background-color: rgb(220, 220, 220);
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 2px;
+  color:#222;
   margin:20px;
   padding: 20px;
   flex-direction: row;
@@ -171,8 +211,10 @@ input{
 }
 
 .rhyme{
-  background-color: #222;
-  color:white;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 2px;
+  color:#222;
   margin:20px;
   padding: 20px;
   flex-direction: row;
@@ -186,27 +228,67 @@ input{
   margin: 5px;
   background-color: white;
   color: black;
+  font-family: 'Josefin Slab', serif;
 }
 
 .words{
   margin: 5px;
-
 }
 
-/*Poem FLow Styel*/
+.searchButt{
+  font-family: 'Questrial', sans-serif;
+}
 
-.poemFlow{
+/*Styles for Collection*/
+.Collection{
   display: flex;
   justify-content: center;
+  margin-bottom: 300px;
 }
+
+.poemList{
+  margin-top: 40px;
+  width: 170px;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.activePoem{
+  border-radius: 3px;
+}
+
+input{
+  border-style: solid;
+  border: 1px;
+  margin: 3px;
+}
+
+.poem{
+  background-color: rgb(240, 240, 240);
+  color: #222;
+  font-family: 'Questrial', sans-serif;
+  border: 1px solid rgb(220, 220, 220);
+  margin: 5px;
+}
+
+.poemTitle{
+  padding: 6px;
+  margin: 4px;
+}
+
+.publish{
+  font-family: 'Poiret One', cursive;
+}
+
 
 /*FORM Text area, Title and Button Styles*/
 
 .buttonForm{
-  background-color: #222;
-  color: white;
-  border: 1px solid #222;
+  background-color: rgb(230, 230, 230);
+  color: #222;
+  border: 1px solid rgb(200, 200, 200);
   border-radius: 3px;
+  padding: 5px;
 }
 
 textarea{
@@ -216,6 +298,7 @@ textarea{
   outline: none;
   border: 1px;
   margin: 3px;
+  font-size: 12px;
 }
 
 .titleArea{
@@ -225,19 +308,105 @@ textarea{
   outline: none;
   border: 1px;
   margin: 3px;
+  font-size: 14px;
+}
+
+/*POEM FLOW*/
+.poemFlow{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.poemFlowPic{
+  height: 30px;
+  width: 100%;
+  max-width: 30px;
+  border-radius: 40px;
+  padding-bottom: 4px;
+}
+
+.author{
+  margin-left: 8px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid rgb(235, 235, 235);
+}
+
+.tags{
+  padding-left: 30px;
+  padding-top: 5px;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+}
+
+.poemDisplay{
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-right: 8px;
+  height: 400px;
+  width: 400px;
+  overflow: scroll;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid rgb(235, 235, 235);
+  white-space: pre-line;
+}
+
+.poemWords{
+  font-size: 14px;
+  padding: 5px;
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+.poemWordsTitle{
+  font-size: 16px;
+  padding: 5px;
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+/*Modal Styling*/
+
+.modal{
+  height: 300px;
+  width: 450px;
+  background-color: #F5F5F5;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.modalInfo{
+  margin-top: 20%;
+  font-family: 'Rubik', sans-serif;
+}
+
+.modalButtons{
+  margin-top: 20%;
+}
+
+.mod{
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #222;
+  color: white;
+  padding: 15px;
+  border-radius: 3px;
+  border: 1px solid #222;
 }
 
 
 
 
 
-
-/*@keyframes App-logo-spin {
+@keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-.App-logo {
+/*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }*/

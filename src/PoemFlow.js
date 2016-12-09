@@ -37,11 +37,15 @@ class PoemFlow extends Component {
         {this.state.poems.map((poem, i) => {
           return(
           <div key={i}>
-            <h3>{poem.title}</h3>
-            <p>{poem.poem}</p>
-            <p>{poem.user_id}</p>
-            <img src={poem.profile_picture} alt="pic" className="profilePic"/>
-            <p>{poem.email}</p>
+              <div className="poemDisplay">
+                <p className="poemWordsTitle">{poem.title}</p><br />
+                {' '}
+                <p className="poemWords">{poem.poem}</p>
+              </div>
+            <div className="author">
+              <img src={poem.profile_picture} alt="pic" className="poemFlowPic"/>
+              <p className="tags">{poem.email}</p>
+            </div>
           </div>
           )
         })}

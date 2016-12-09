@@ -20,6 +20,7 @@ import axios from 'axios';
        nouns: [],
        verbs: []
      })
+     this.refs.wordToFind.value = ""
    }
 
    _findSynonyms(){
@@ -41,12 +42,12 @@ import axios from 'axios';
 
      return (
        <div className="thesaurus">
-        <h4>Thesaurus</h4>
+        <h4>thesaurus</h4>
          <form onSubmit={this._findSynonyms}>
            <input type="text" ref="wordToFind" placeholder="enter word" />
-           <input type="submit" value="SEARCH"/>
+           <input type="submit" className="searchButt" value="SEARCH"/>
          </form>
-         <button onClick={this._clearField}>CLEAR</button>
+         <button className="searchButt" onClick={this._clearField}>CLEAR</button>
          <div>
            <div className="results">
              {this.state.nouns.map((noun, i) => {

@@ -68,8 +68,10 @@ static propTypes = {
     if (auth.loggedIn() === false) {
         console.log('loggedIn H');
         return(
-          <div className="home">
-            <h1>Poem</h1>
+          <div className="welcome" >
+            <h3 className="wel1">WELCOME TO</h3><br />
+            <h4 className="wel2">POEM DROP</h4><br />
+            <p className="wel3">Click the Login Link above to sign in with GOOGLE, LinkedIN or Twitter</p>
           </div>
         )
     } else {
@@ -80,7 +82,7 @@ static propTypes = {
                <input className="titleArea" type="text" ref="titleP" placeholder="title" /><br />
                <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here"/><br />
                {/* <input type="checkbox" ref="public" onCheck={this._makePublic} />Public<br /> */}
-               <input type="submit" className="buttonForm" />
+               <input type="submit" className="buttonForm" value="SUBMIT" />
             </form>
            </div>
           <div className="wordReferenceList">

@@ -19,6 +19,7 @@ import axios from 'axios';
      this.setState({
        rhymes: [],
      })
+     this.refs.wordToSearch.value = ""
    }
 
    _findRhyme(){
@@ -41,13 +42,13 @@ import axios from 'axios';
 
      return (
        <div className="rhyme">
-        <h4>Rhyme</h4>
+        <h4>rhyme</h4>
          <form onSubmit={this._findRhyme}>
            <input type="text" ref="wordToSearch" placeholder="enter word" />
-           <input type="submit" value="SEARCH"/>
+           <input className="searchButt" type="submit" value="SEARCH"/>
          </form>
          <button onClick={this._clearField}>CLEAR</button>
-          <div className="results">
+          <div className="searchButt" className="results">
           {this.state.rhymes.map((rhyme, i) => {
             return <p className="words" key={i}>{rhyme}</p>
           })}

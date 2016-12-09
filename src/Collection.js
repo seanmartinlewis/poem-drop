@@ -5,6 +5,7 @@ import axios from 'axios';
 // import AuthService from './utils/AuthService';
 import Poem from './Poem';
 // import ActivePoem from './ActivePoem';
+import Modal from 'boron/OutlineModal';
 
 class Collection extends Component {
   constructor(props){
@@ -28,8 +29,17 @@ class Collection extends Component {
     this._handleSubmitPut = this._handleSubmitPut.bind(this);
     this._deleteThisPoem = this._deleteThisPoem.bind(this);
     this._toggleCheckbox = this._toggleCheckbox.bind(this);
+    this._hideModal = this._hideModal.bind(this)
+    this._showModal = this._showModal.bind(this)
   }
 
+  _hideModal(){
+    this.refs.modal.hide();
+  }
+
+  _showModal(){
+    this.refs.modal.show();
+  }
 
   componentDidMount(){
   this._loadPoems()
@@ -62,6 +72,7 @@ class Collection extends Component {
           poem: 'Click on poem to view and edit'
         }
       })
+      this._hideModal();
     })
 
   }
@@ -146,11 +157,22 @@ class Collection extends Component {
             <form onSubmit={this._handleSubmitPut}>
                <input className="titleArea" type="text" ref="titleP" placeholder="title" value={this.state.mainPoem.title} onChange={this.handleChangeTitle} /><br />
                <textarea rows="20" cols="60" ref="poemBody" placeholder="Place Your Poem Here" value={this.state.mainPoem.poem} onChange={this.handleChangeText}/><br />
-               <input type="checkbox" ref="public" checked={this.state.mainPoem.public} onChange={this._toggleCheckbox}/>Public<br />
+               <input type="checkbox" ref="public" checked={this.state.mainPoem.public} onChange={this._toggleCheckbox}/> <span className="publish">publish</span><br />
                <input type="submit" value="Save Changes" className="buttonForm" />
-               <button className="buttonForm" onClick={this._deleteThisPoem}>Delete Poem</button>
+               <button className="buttonForm" onClick={this._showModal}>Delete Poem</button>
              </form>
           </div>
+
+          <Modal ref="modal" className="modal">
+            <div className="modalInfo">
+              <h2>Once you click delete, There is NO RETURN. Your poem will be gone FOREVER </h2>
+            </div>
+            <div className="modalButtons">
+              <button className="mod" onClick={this._hideModal}>RETURN TO POEM</button>
+              <button className="mod" onClick={this._deleteThisPoem}>DELETE FOREVER</button>
+            </div>
+          </Modal>
+
           <div className="poemList">
           {this.state.poems.map((poem, i) => {
             return <Poem loadPoem={this._loadThisPoem} key={i} poem={poem} />
