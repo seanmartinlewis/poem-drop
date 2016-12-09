@@ -24,13 +24,10 @@ import axios from 'axios';
    }
 
    _findSynonyms(){
-     console.log('finding', this.refs.wordToFind.value);
      let word = this.refs.wordToFind.value
      axios.get('http://words.bighugelabs.com/api/2/7194d494c196c6f2726d9651900f8e10/'+word+'/json').then(response => {
        let synonymsNoun = response.data.noun.syn
        let synonymsVerb = response.data.verb.syn
-       console.log(synonymsNoun);
-       console.log(synonymsVerb);
        this.setState({
          nouns: synonymsNoun,
          verbs: synonymsVerb

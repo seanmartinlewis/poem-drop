@@ -29,15 +29,10 @@ static propTypes = {
 
   _handleSubmit(e) {
     e.preventDefault()
-    console.log('hello');
     let poemTitle = this.refs.titleP.value;
     let poemBody = this.refs.poemBody.value;
     let profPic = this.state.profile.picture
     let userEmail = this.state.profile.email
-    console.log(profPic);
-    console.log(poemTitle);
-    console.log(poemBody);
-    console.log(userEmail);
     axios.post('https://guarded-lowlands-63333.herokuapp.com/poems', {
       poem: {
         title: poemTitle,
@@ -66,7 +61,6 @@ static propTypes = {
   render(){
     const auth = this.props.auth;
     if (auth.loggedIn() === false) {
-        console.log('loggedIn H');
         return(
           <div className="welcome" >
             <h3 className="wel1">WELCOME TO</h3><br />

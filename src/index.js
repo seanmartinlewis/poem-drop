@@ -11,7 +11,6 @@ import AuthService from './utils/AuthService';
 const auth = new AuthService('gIwkaePZpccdxCUTtb0BPxa63nyCLcXa', 'rattlesnakemilk.auth0.com')
 
 const requireAuth = (nextState, replace) => {
-   console.log('requireAuth');
    if (!auth.loggedIn()) {
      replace({
        pathname: '/'

@@ -23,7 +23,6 @@ import axios from 'axios';
    }
 
    _findDefinition(){
-     console.log('finding', this.refs.wordToSearch.value);
      let word = this.refs.wordToSearch.value
      axios.get('https://wordsapiv1.p.mashape.com/words/'+word+'/definitions', {
        headers: {
@@ -31,7 +30,6 @@ import axios from 'axios';
        }
      }).then(response => {
        let newDefinition = response.data.definitions
-       console.log(response.data.definitions[0]);
        this.setState({
          definitions: newDefinition
        })

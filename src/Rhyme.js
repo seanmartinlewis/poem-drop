@@ -23,7 +23,6 @@ import axios from 'axios';
    }
 
    _findRhyme(){
-     console.log('finding', this.refs.wordToSearch.value);
      let word = this.refs.wordToSearch.value
      axios.get('https://wordsapiv1.p.mashape.com/words/'+word+'/rhymes', {
        headers: {
@@ -31,7 +30,6 @@ import axios from 'axios';
        }
      }).then(response => {
        let newRhyme = response.data.rhymes.all
-       console.log(response.data.rhymes.all);
        this.setState({
          rhymes: newRhyme
        })
@@ -47,8 +45,8 @@ import axios from 'axios';
            <input type="text" ref="wordToSearch" placeholder="enter word" />
            <input className="searchButt" type="submit" value="SEARCH"/>
          </form>
-         <button onClick={this._clearField}>CLEAR</button>
-          <div className="searchButt" className="results">
+         <button className="searchButt" onClick={this._clearField}>CLEAR</button>
+          <div className="results">
           {this.state.rhymes.map((rhyme, i) => {
             return <p className="words" key={i}>{rhyme}</p>
           })}

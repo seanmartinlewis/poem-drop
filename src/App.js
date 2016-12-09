@@ -66,9 +66,6 @@ constructor(props, context) {
     const auth = this.props.route.auth;
     // const { profile } = this.state
     let sessionLink = auth.loggedIn() ? this._logoutLink() : this._loginLink();
-    if (auth.loggedIn() === true) {
-        console.log('loggedIn');
-    }
 
     let children = null;
      if (this.props.children) {

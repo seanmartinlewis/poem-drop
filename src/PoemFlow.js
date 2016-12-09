@@ -20,10 +20,8 @@ class PoemFlow extends Component {
   }
 
   _loadPoemFlow(){
-    console.log('loading poem flow');
     axios.get('https://guarded-lowlands-63333.herokuapp.com/poems/public').then(data => {
       let poemF = data.data;
-      console.log(poemF);
       this.setState({
         poems: poemF
       })

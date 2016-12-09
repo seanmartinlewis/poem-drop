@@ -46,7 +46,6 @@ class Collection extends Component {
   }
 
   _toggleCheckbox(){
-    console.log('toggle');
     let newPoem = Object.assign(
       {},
       this.state.mainPoem,
@@ -57,8 +56,6 @@ class Collection extends Component {
 
   _deleteThisPoem(e){
     e.preventDefault()
-    console.log('delete');
-    console.log('id', this.state.mainPoem.id);
     axios.delete('https://guarded-lowlands-63333.herokuapp.com/poems/' + this.state.mainPoem.id, {
       headers: {
         'Authorization': `Bearer ${this.props.auth.getToken()}`
@@ -97,7 +94,6 @@ class Collection extends Component {
 
 
   _loadThisPoem(thisPoem){
-    console.log('poem id', thisPoem.id);
     this.setState({
       mainPoem: {
         id: thisPoem.id,
@@ -109,7 +105,6 @@ class Collection extends Component {
   }
 
   _loadPoems() {
-    console.log('loading poems');
     axios.get('https://guarded-lowlands-63333.herokuapp.com/poems', {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -117,7 +112,6 @@ class Collection extends Component {
       }
     }).then(data => {
       let newPoems = data.data;
-      console.log(newPoems);
       this.setState({
         poems: newPoems
       })
@@ -126,14 +120,9 @@ class Collection extends Component {
 
   _handleSubmitPut(e) {
     e.preventDefault()
-    console.log('update');
     let poemTitle = this.refs.titleP.value;
     let poemBody = this.refs.poemBody.value;
     let poemPublic = this.state.mainPoem.public;
-    console.log(poemTitle);
-    console.log(poemBody);
-    console.log('poem is public', poemPublic);
-    console.log('id', this.state.mainPoem.id);
     axios.put('https://guarded-lowlands-63333.herokuapp.com/poems/' + this.state.mainPoem.id, {
       poem: {
         title: poemTitle,
